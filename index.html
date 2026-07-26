@@ -3,21 +3,22 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>黄天择 Tianze Huang | 风的暖色调</title>
-<meta name="description" content="黄天择的个人学术主页:研究方向、项目经历、发表论文与联系方式。Personal academic homepage of Tianze Huang.">
+<title>黄天择 Tianze Huang</title>
+<meta name="description" content="黄天择的个人学术主页:研究方向、发表论文、项目经历与联系方式。Personal academic homepage of Tianze Huang.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Spectral:wght@500;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
   :root {
-    --paper: #FBFBF9;
-    --ink: #21272E;
-    --ink-soft: #5B6470;
-    --accent: #24548C;
-    --accent-tint: #EAF0F7;
-    --rule: #E4E4DE;
-    --serif: "Spectral", "Songti SC", "Noto Serif SC", serif;
-    --sans: "Inter", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+    --bg: #FFFFFF;
+    --ink: #333333;
+    --ink-soft: #767676;
+    --link: #1772D0;
+    --link-hover: #F09228;
+    --rule: #E8E8E8;
+    --thumb-bg: #F4F4F4;
+    --badge: #C0392B;
+    --sans: "Inter", "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", Arial, sans-serif;
   }
 
   * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -25,472 +26,412 @@
   html { scroll-behavior: smooth; }
   @media (prefers-reduced-motion: reduce) {
     html { scroll-behavior: auto; }
-    * { animation: none !important; transition: none !important; }
+    * { transition: none !important; }
   }
 
   body {
-    background: var(--paper);
+    background: var(--bg);
     color: var(--ink);
     font-family: var(--sans);
-    font-size: 16px;
-    line-height: 1.75;
+    font-size: 15.5px;
+    line-height: 1.7;
     -webkit-font-smoothing: antialiased;
   }
 
-  /* ===== 双语切换 ===== */
+  /* 双语切换 */
   body[data-lang="zh"] .lang-en { display: none; }
   body[data-lang="en"] .lang-zh { display: none; }
 
   .wrap {
-    max-width: 760px;
+    max-width: 820px;
     margin: 0 auto;
-    padding: 0 24px;
+    padding: 0 24px 40px;
   }
 
   a {
-    color: var(--accent);
+    color: var(--link);
     text-decoration: none;
-    border-bottom: 1px solid transparent;
-    transition: border-color .15s ease;
+    transition: color .12s ease;
   }
-  a:hover, a:focus-visible { border-bottom-color: var(--accent); }
-  a:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 2px; }
-
-  /* ===== 顶部 ===== */
-  header {
-    padding: 64px 0 40px;
-    animation: rise .5s ease both;
-    position: relative;
-  }
-  @keyframes rise {
-    from { opacity: 0; transform: translateY(8px); }
-    to   { opacity: 1; transform: none; }
-  }
+  a:hover, a:focus-visible { color: var(--link-hover); }
+  a:focus-visible { outline: 2px solid var(--link); outline-offset: 2px; border-radius: 2px; }
 
   .lang-switch {
     position: absolute;
-    top: 24px;
-    right: 0;
+    top: 18px;
+    right: 24px;
     font-size: .85rem;
     font-weight: 500;
     background: none;
     border: 1px solid var(--rule);
     border-radius: 999px;
-    padding: 5px 14px;
+    padding: 4px 14px;
     cursor: pointer;
     color: var(--ink-soft);
     font-family: var(--sans);
-    transition: color .15s ease, border-color .15s ease;
+    transition: color .12s ease, border-color .12s ease;
   }
-  .lang-switch:hover, .lang-switch:focus-visible {
-    color: var(--accent);
-    border-color: var(--accent);
-  }
-  .lang-switch:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+  .lang-switch:hover, .lang-switch:focus-visible { color: var(--link); border-color: var(--link); }
+  .lang-switch:focus-visible { outline: 2px solid var(--link); outline-offset: 2px; }
 
-  .hero {
-    display: grid;
-    grid-template-columns: 1fr auto;
-    gap: 28px;
-    align-items: center;
+  /* ===== 顶部:居中头像 + 姓名 + 头衔 + 链接 ===== */
+  header {
+    position: relative;
+    text-align: center;
+    padding: 72px 0 12px;
   }
 
-  /* 照片:低调的圆形头像 */
   .avatar {
-    width: 128px;
-    height: 128px;
+    width: 172px;
+    height: 172px;
     border-radius: 50%;
     object-fit: cover;
-    border: 3px solid #fff;
-    box-shadow: 0 2px 12px rgba(33, 39, 46, .12);
-    background: var(--accent-tint);
-    flex-shrink: 0;
+    background: var(--thumb-bg);
+    display: block;
+    margin: 0 auto 18px;
   }
 
-  .name {
-    font-family: var(--serif);
-    font-weight: 600;
-    font-size: 2.4rem;
+  h1.page-name {
+    font-size: 1.9rem;
+    font-weight: 700;
     letter-spacing: .01em;
-    line-height: 1.2;
+    line-height: 1.3;
   }
-  .name .sub {
-    font-size: 1.15rem;
-    color: var(--ink-soft);
+  .page-name .alt {
     font-weight: 500;
-    margin-left: .5em;
+    font-size: 1.1rem;
+    color: var(--ink-soft);
+    margin-left: .4em;
   }
 
-  .tagline {
-    margin-top: 10px;
-    color: var(--ink-soft);
-    font-size: 1.02rem;
+  .titles {
+    margin-top: 8px;
+    color: var(--ink);
+    font-size: .98rem;
+    line-height: 1.65;
   }
+  .titles .soft { color: var(--ink-soft); }
 
-  nav.site-nav {
-    margin-top: 28px;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-    font-size: .92rem;
-    font-weight: 500;
+  .profile-links {
+    margin-top: 12px;
+    font-size: .93rem;
+    color: var(--ink-soft);
   }
-  nav.site-nav a { color: var(--ink); }
-  nav.site-nav a:hover { color: var(--accent); }
+  .profile-links a { font-weight: 500; }
 
   /* ===== 章节 ===== */
-  section { padding: 40px 0; border-top: 1px solid var(--rule); }
+  section { padding-top: 40px; }
 
   h2 {
-    font-family: var(--serif);
-    font-weight: 600;
     font-size: 1.35rem;
-    margin-bottom: 22px;
+    font-weight: 700;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--rule);
+    margin-bottom: 20px;
   }
 
-  .about p + p { margin-top: 14px; }
+  .prose p + p { margin-top: 12px; }
+  .prose i { color: var(--ink); }
 
-  .interests {
-    margin-top: 20px;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-  }
-  .interests span {
-    background: var(--accent-tint);
-    color: var(--accent);
-    font-size: .85rem;
-    font-weight: 500;
-    padding: 4px 12px;
-    border-radius: 999px;
+  /* ===== 教育经历(简洁行) ===== */
+  .edu-line { margin-bottom: 10px; }
+  .edu-line .when {
+    color: var(--ink-soft);
+    font-size: .9rem;
   }
 
-  /* ===== 左侧时间列的通用布局(教育/项目/论文共用) ===== */
-  .row-list { display: grid; gap: 24px; }
-  .row {
+  /* ===== 论文 / 项目:左图右文 ===== */
+  .entry {
     display: grid;
-    grid-template-columns: 96px 1fr;
-    gap: 0 20px;
+    grid-template-columns: 190px 1fr;
+    gap: 22px;
+    align-items: center;
+    padding: 18px 0;
   }
-  .row .side {
-    font-family: var(--serif);
+  .entry + .entry { border-top: 1px solid var(--rule); }
+
+  .thumb {
+    width: 190px;
+    height: 120px;
+    background: var(--thumb-bg);
+    border-radius: 6px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--ink-soft);
+    font-size: .8rem;
+  }
+  .thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .entry .title {
     font-weight: 600;
-    color: var(--accent);
-    font-size: .95rem;
-    padding-top: 2px;
+    font-size: 1.02rem;
     line-height: 1.5;
   }
-  .row .head { font-weight: 600; font-size: 1.02rem; line-height: 1.5; }
-  .row .note { color: var(--ink-soft); font-size: .92rem; }
-  .row .role {
-    display: inline-block;
-    background: var(--accent-tint);
-    color: var(--accent);
-    font-size: .78rem;
-    font-weight: 500;
-    padding: 1px 10px;
-    border-radius: 999px;
-    margin-left: 6px;
-    vertical-align: 2px;
-  }
-  .row ul {
-    margin-top: 8px;
-    padding-left: 1.15em;
-    color: var(--ink);
-    font-size: .95rem;
-    display: grid;
-    gap: 6px;
-  }
-
-  /* ===== 论文 ===== */
-  .pub .authors {
+  .entry .venue {
     color: var(--ink-soft);
     font-size: .92rem;
     margin-top: 2px;
   }
-  .pub .authors b { color: var(--ink); font-weight: 600; }
-  .pub .meta {
-    margin-top: 4px;
-    font-size: .88rem;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 12px;
-    align-items: baseline;
-  }
-  .pub .venue {
-    font-style: italic;
+  .entry .authors {
+    font-size: .92rem;
+    margin-top: 2px;
     color: var(--ink-soft);
-    font-family: var(--serif);
+  }
+  .entry .authors b { color: var(--ink); font-weight: 600; }
+  .entry .desc {
+    font-size: .92rem;
+    color: var(--ink);
+    margin-top: 6px;
+  }
+  .entry .links {
+    margin-top: 6px;
+    font-size: .92rem;
+  }
+  .entry .links a { margin-right: 8px; font-weight: 500; }
+  .entry .award {
+    margin-top: 4px;
+    color: var(--badge);
+    font-size: .88rem;
+    font-weight: 600;
   }
 
-  /* ===== 荣誉奖项 ===== */
-  .honors {
-    list-style: none;
-    display: grid;
-    gap: 10px;
+  .scholar-note {
+    font-size: .92rem;
+    color: var(--ink-soft);
+    margin-bottom: 6px;
   }
+
+  /* ===== 荣誉 ===== */
+  .honors { list-style: none; }
   .honors li {
-    padding-left: 22px;
+    padding: 6px 0 6px 20px;
     position: relative;
     font-size: .96rem;
   }
   .honors li::before {
-    content: "";
+    content: "•";
     position: absolute;
     left: 4px;
-    top: .62em;
-    width: 7px;
-    height: 7px;
-    border-radius: 50%;
-    background: var(--accent);
-    opacity: .55;
-  }
-
-  /* ===== 联系方式 ===== */
-  .contact-list {
-    list-style: none;
-    display: grid;
-    gap: 10px;
-  }
-  .contact-list li {
-    display: grid;
-    grid-template-columns: 110px 1fr;
-    gap: 12px;
-    font-size: .96rem;
-  }
-  .contact-list .label {
-    color: var(--ink-soft);
-    font-weight: 500;
+    color: var(--link);
   }
 
   footer {
+    margin-top: 56px;
+    padding-top: 18px;
     border-top: 1px solid var(--rule);
-    padding: 28px 0 48px;
     color: var(--ink-soft);
     font-size: .85rem;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 8px;
   }
 
-  @media (max-width: 560px) {
-    header { padding-top: 64px; }
-    .lang-switch { top: 18px; }
-    .hero {
-      grid-template-columns: 1fr;
-      justify-items: center;
-      text-align: center;
-      gap: 20px;
-    }
-    .hero-text { order: 2; }
-    .avatar { order: 1; width: 112px; height: 112px; }
-    .name { font-size: 1.9rem; }
-    .name .sub { display: block; margin: 6px 0 0; }
-    nav.site-nav { justify-content: center; }
-    .row { grid-template-columns: 1fr; gap: 4px; }
-    .contact-list li { grid-template-columns: 90px 1fr; }
+  @media (max-width: 620px) {
+    header { padding-top: 84px; }
+    .lang-switch { top: 16px; }
+    .entry { grid-template-columns: 1fr; gap: 12px; }
+    .thumb { width: 100%; height: 160px; }
+    footer { justify-content: center; text-align: center; }
   }
 </style>
 </head>
 <body data-lang="zh">
 
-<div class="wrap">
+<button class="lang-switch" id="langSwitch" type="button" aria-label="Switch language">
+  <span class="lang-zh">English</span><span class="lang-en">中文</span>
+</button>
+
+<div class="wrap" id="Home">
 
   <header>
-    <button class="lang-switch" id="langSwitch" type="button" aria-label="Switch language">
-      <span class="lang-zh">English</span><span class="lang-en">中文</span>
-    </button>
+    <!-- 照片:把照片命名为 photo.jpg 上传到仓库根目录;未上传时自动显示 GitHub 头像 -->
+    <img class="avatar" src="photo.jpg" alt="黄天择 Tianze Huang"
+         onerror="this.src='https://github.com/windloveyou.png'">
 
-    <div class="hero">
-      <div class="hero-text">
-        <h1 class="name">
-          <span class="lang-zh">黄天择<span class="sub">Tianze Huang · 风的暖色调</span></span>
-          <span class="lang-en">Tianze Huang<span class="sub">风的暖色调</span></span>
-        </h1>
+    <h1 class="page-name">
+      <span class="lang-zh">黄天择<span class="alt">Tianze Huang</span></span>
+      <span class="lang-en">Tianze Huang<span class="alt">黄天择</span></span>
+    </h1>
 
-        <p class="tagline">
-          <span class="lang-zh">华中师范大学硕士(计算机方向)</span>
-          <span class="lang-en">M.S. Student in Computer Science, Central China Normal University</span>
-        </p>
+    <p class="titles">
+      <span class="lang-zh">
+        华中师范大学 硕士生(2026 级,人工智能方向)<br>
+        <span class="soft">本科:苏州工学院 物联网工程(嵌入式培养),2022 – 2026</span>
+      </span>
+      <span class="lang-en">
+        Incoming M.S. Student in AI, Central China Normal University (Fall 2026)<br>
+        <span class="soft">B.Eng. in IoT Engineering, Suzhou University of Technology, 2022 – 2026</span>
+      </span>
+    </p>
 
-        <nav class="site-nav">
-          <a href="#about"><span class="lang-zh">关于我</span><span class="lang-en">About</span></a>
-          <a href="#education"><span class="lang-zh">教育经历</span><span class="lang-en">Education</span></a>
-          <a href="#publications"><span class="lang-zh">发表论文</span><span class="lang-en">Publications</span></a>
-          <a href="#projects"><span class="lang-zh">项目经历</span><span class="lang-en">Projects</span></a>
-          <a href="#honors"><span class="lang-zh">荣誉奖项</span><span class="lang-en">Honors</span></a>
-          <a href="#contact"><span class="lang-zh">联系方式</span><span class="lang-en">Contact</span></a>
-        </nav>
-      </div>
-
-      <!-- 个人照片:把照片命名为 photo.jpg 上传到仓库根目录(和 index.html 同层)即可;
-           未上传时自动显示 GitHub 头像 -->
-      <img class="avatar" src="photo.jpg" alt="黄天择的照片"
-           onerror="this.src='https://github.com/windloveyou.png'">
-    </div>
+    <p class="profile-links">
+      <a href="https://scholar.google.com/citations?user=MoO2vmsAAAAJ" target="_blank" rel="noopener">Google Scholar</a>
+      &nbsp;/&nbsp;
+      <a href="https://github.com/windloveyou" target="_blank" rel="noopener">GitHub</a>
+      &nbsp;/&nbsp;
+      <a href="mailto:windlovey@gmail.com">Email</a>
+      &nbsp;/&nbsp;
+      <a href="https://blog.csdn.net/m0_73954489?type=lately" target="_blank" rel="noopener">CSDN</a>
+      &nbsp;/&nbsp;
+      <a href="https://space.bilibili.com/你的UID" target="_blank" rel="noopener">Bilibili</a>
+      <!-- 👆 Bilibili 请换成你 B 站主页的真实网址(形如 space.bilibili.com/数字UID) -->
+    </p>
   </header>
 
-  <section id="about" class="about">
-    <h2><span class="lang-zh">关于我</span><span class="lang-en">About</span></h2>
-
-    <div class="lang-zh">
+  <section id="about">
+    <h2><span class="lang-zh">关于我</span><span class="lang-en">About Me</span></h2>
+    <div class="prose lang-zh">
       <p>
-        我是黄天择,苏州工学院物联网工程专业(嵌入式培养)本科生,即将进入华中师范大学攻读硕士学位。
-        我的研究兴趣集中在人工智能领域,包括计算机视觉(CV)与自然语言处理(NLP),目前专注于计算机视觉方向,
-        对注意力机制与模型轻量化(剪枝、量化、边缘端部署)有较深入的实践。
+        你好!我是黄天择,即将进入华中师范大学攻读人工智能方向硕士学位,本科就读于苏州工学院物联网工程专业(嵌入式培养)。
       </p>
       <p>
-        我以第一作者身份在人工智能会议 AICCC 2024 发表论文,拥有从算法设计、模型优化到 Jetson / 树莓派等边缘设备落地部署的完整项目经验。
+        我的研究兴趣集中在<i>计算机视觉</i>,尤其是<i>注意力机制</i>与<i>模型轻量化</i>(剪枝、量化与边缘端部署)。
+        我以第一作者身份提出了高效空间敏感部分通道注意力机制 ESPCA,并在 AICCC 2024 发表;
+        也有从算法设计、TensorRT / INT8 优化到 Jetson Nano、树莓派等边缘设备落地的完整项目经验。
+        我相信让模型"又好又快地跑在真实设备上"与提出新方法同样重要。
       </p>
       <p>⭐ 我的目标:成为一名优秀的人工智能算法工程师。</p>
     </div>
-    <div class="lang-en">
+    <div class="prose lang-en">
       <p>
-        I am Tianze Huang, an undergraduate in IoT Engineering (Embedded Systems Track) at Suzhou University of Technology,
-        and an incoming master's student at Central China Normal University. My research interests lie in Artificial Intelligence,
-        including Computer Vision (CV) and Natural Language Processing (NLP). I currently focus on Computer Vision,
-        with hands-on experience in attention mechanisms and model compression (pruning, quantization, and edge deployment).
+        Hello! I am Tianze Huang, an incoming master's student in Artificial Intelligence at Central China Normal University.
+        I received my B.Eng. in IoT Engineering (Embedded Systems Track) from Suzhou University of Technology.
       </p>
       <p>
-        I published a first-author paper at AICCC 2024, and have end-to-end project experience from algorithm design and
-        model optimization to real-world deployment on edge devices such as Jetson Nano and Raspberry Pi.
+        My research interests center on <i>computer vision</i>, especially <i>attention mechanisms</i> and
+        <i>model compression</i> (pruning, quantization, and edge deployment). I proposed ESPCA, an efficient
+        spatial-sensitive partial channel attention mechanism, published as a first-author paper at AICCC 2024.
+        I also have end-to-end experience taking models from algorithm design through TensorRT / INT8 optimization
+        to deployment on edge devices such as Jetson Nano and Raspberry Pi. I believe making models run
+        <i>fast and well on real devices</i> matters as much as inventing new methods.
       </p>
       <p>⭐ My goal: to become an excellent AI algorithm engineer.</p>
-    </div>
-
-    <div class="interests">
-      <span class="lang-zh">计算机视觉</span><span class="lang-en">Computer Vision</span>
-      <span class="lang-zh">注意力机制</span><span class="lang-en">Attention Mechanisms</span>
-      <span class="lang-zh">模型轻量化</span><span class="lang-en">Model Compression</span>
-      <span class="lang-zh">边缘端部署</span><span class="lang-en">Edge Deployment</span>
-      <span class="lang-zh">自然语言处理</span><span class="lang-en">NLP</span>
-    </div>
-  </section>
-
-  <section id="education">
-    <h2><span class="lang-zh">教育经历</span><span class="lang-en">Education</span></h2>
-    <div class="row-list">
-
-      <div class="row">
-        <div class="side">2026 –</div>
-        <div>
-          <div class="head">
-            <span class="lang-zh">华中师范大学 · 硕士</span>
-            <span class="lang-en">Central China Normal University · M.S.</span>
-          </div>
-          <div class="note">
-            <span class="lang-zh">人工智能方向</span>
-            <span class="lang-en">Artificial Intelligence</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="row">
-        <div class="side">2022 – 2026</div>
-        <div>
-          <div class="head">
-            <span class="lang-zh">苏州工学院 · 本科</span>
-            <span class="lang-en">Suzhou University of Technology · B.Eng.</span>
-          </div>
-          <div class="note">
-            <span class="lang-zh">物联网工程(嵌入式培养)· 中共党员 · 副班长</span>
-            <span class="lang-en">IoT Engineering (Embedded Systems Track) · CPC Member · Deputy Class Monitor</span>
-          </div>
-        </div>
-      </div>
-
     </div>
   </section>
 
   <section id="publications">
     <h2><span class="lang-zh">发表论文</span><span class="lang-en">Publications</span></h2>
-    <div class="row-list">
 
-      <div class="row pub">
-        <div class="side">2024</div>
-        <div>
-          <div class="head">ESPCA: An Efficient Spatial-Sensitive Partial Channel Attention Mechanism in CNNs</div>
-          <div class="authors">
-            <b>Tianze Huang</b>
-            <span class="lang-zh">(第一作者)</span>
-            <span class="lang-en">(First Author)</span>
-          </div>
-          <div class="lang-zh note" style="margin-top:6px;">
-            针对经典注意力机制(SE、CBAM、CA)推理延迟高、通道特征冗余的问题,提出在部分通道上结合 CA 注意力的 ESPCA 机制,
-            并采用非降维方法保持通道与权重的直接对应关系;在 ImageNet、MS COCO 等数据集上验证了其对目标检测与图像分类精度的提升。
-          </div>
-          <div class="lang-en note" style="margin-top:6px;">
-            ESPCA addresses the high inference latency and channel redundancy of classic attention mechanisms (SE, CBAM, CA)
-            by applying CA attention to partial channels with a non-dimensionality-reduction design, improving both
-            object detection and image classification accuracy on ImageNet and MS COCO.
-          </div>
-          <div class="meta">
-            <span class="venue">AICCC 2024</span>
-            <!-- 有论文/代码链接的话,取消注释并填入网址
-            <a href="https://xxxx">Paper</a>
-            <a href="https://github.com/windloveyou/xxxx">Code</a>
-            -->
-          </div>
+    <p class="scholar-note">
+      <span class="lang-zh">完整论文列表请见我的 <a href="https://scholar.google.com/citations?user=MoO2vmsAAAAJ" target="_blank" rel="noopener">Google Scholar</a>。</span>
+      <span class="lang-en">For the full publication list, please refer to my <a href="https://scholar.google.com/citations?user=MoO2vmsAAAAJ" target="_blank" rel="noopener">Google Scholar page</a>.</span>
+    </p>
+
+    <div class="entry">
+      <!-- 论文配图:上传一张名为 espca.png 的图(方法示意图/结果图)到仓库根目录 -->
+      <div class="thumb">
+        <img src="espca.png" alt="ESPCA"
+             onerror="this.remove()">
+      </div>
+      <div>
+        <div class="title">ESPCA: An Efficient Spatial-Sensitive Partial Channel Attention Mechanism in CNNs</div>
+        <div class="venue">AICCC 2024</div>
+        <div class="authors"><b>Tianze Huang, Yan Qian, Gaofei Sun*, Jiahao Yu, Zhenjiang Qian, Feng Li, Xiaobing Xian</b> <span class="lang-en">(First Author)</span></div>
+        <div class="desc lang-zh">
+          针对 SE、CBAM、CA 等经典注意力机制推理延迟高、通道特征冗余的问题,在部分通道上结合 CA 注意力并采用非降维设计,
+          在 ImageNet、MS COCO 上有效提升目标检测与图像分类精度。
+        </div>
+        <div class="desc lang-en">
+          ESPCA addresses the high latency and channel redundancy of classic attention mechanisms (SE, CBAM, CA)
+          by applying CA attention to partial channels with a non-dimensionality-reduction design, improving
+          detection and classification accuracy on ImageNet and MS COCO.
+        </div>
+        <div class="links">
+          <a href="https://dl.acm.org/doi/full/10.1145/3719384.3719426" target="_blank" rel="noopener">[Paper]</a>
+          <a href="https://github.com/windloveyou/xxxx" target="_blank" rel="noopener">[Code]</a>
         </div>
       </div>
+    </div>
 
-      <div class="row pub">
-        <div class="side">
-          <span class="lang-zh">专利</span>
-          <span class="lang-en">Patent</span>
+    <div class="entry">
+      <div class="thumb">
+        <img src="patent.png" alt="Patent" onerror="this.remove()">
+      </div>
+      <div>
+        <div class="title">
+          <span class="lang-zh">《一种似圆轮廓图像分割方法、系统和介质》</span>
+          <span class="lang-en">A Method, System and Medium for Circle-like Contour Image Segmentation</span>
         </div>
-        <div>
-          <div class="head">
-            <span class="lang-zh">《一种似圆轮廓图像分割方法、系统和介质》</span>
-            <span class="lang-en">A Method, System and Medium for Circle-like Contour Image Segmentation</span>
-          </div>
-          <div class="note">
-            <span class="lang-zh">发明专利 · 第三发明人</span>
-            <span class="lang-en">Invention Patent · Third Inventor</span>
-          </div>
+        <div class="venue">
+          <span class="lang-zh">发明专利</span>
+          <span class="lang-en">Invention Patent</span>
+        </div>
+        <div class="authors">
+          <b><span class="lang-zh">黄天择</span><span class="lang-en">Tianze Huang</span></b>
+          <span class="lang-zh">(第三发明人)</span><span class="lang-en">(Third Inventor)</span>
         </div>
       </div>
-
     </div>
   </section>
 
   <section id="projects">
     <h2><span class="lang-zh">项目经历</span><span class="lang-en">Projects</span></h2>
-    <div class="row-list">
 
-      <div class="row">
-        <div class="side">2024.04 – 2024.08</div>
-        <div>
-          <div class="head">
-            <span class="lang-zh">智慧菌探:基于 MobileNetV3 的羊肚菌智能识别种植系统<span class="role">队长</span></span>
-            <span class="lang-en">Smart Morel: MobileNetV3-based Intelligent Morel Recognition &amp; Cultivation System<span class="role">Team Leader</span></span>
-          </div>
-          <ul class="lang-zh">
-            <li>设计并部署传感器网络,实时监控温湿度、光照强度等关键生长参数;基于 MobileNetV3 轻量级架构,引入特征增强与多尺度特征融合策略,显著提升密集小目标的检测精度。</li>
-            <li>采用模型剪枝与 INT8 量化对模型深度压缩,在树莓派边缘端成功部署,降低推理延迟与能耗,实现大棚环境下的实时智能监测。</li>
-          </ul>
-          <ul class="lang-en">
-            <li>Designed and deployed a sensor network for real-time monitoring of growth parameters; enhanced a lightweight MobileNetV3 with feature augmentation and multi-scale fusion, significantly improving detection of dense small targets.</li>
-            <li>Compressed the model via pruning and INT8 quantization and deployed it on Raspberry Pi, reducing latency and power consumption for real-time greenhouse monitoring.</li>
-          </ul>
+    <div class="entry">
+      <!-- 项目配图:上传一张名为 morel.jpg 的项目照片到仓库根目录 -->
+      <div class="thumb">
+        <img src="morel.jpg" alt="Smart Morel" onerror="this.remove()">
+      </div>
+      <div>
+        <div class="title">
+          <span class="lang-zh">智慧菌探:基于 MobileNetV3 的羊肚菌智能识别种植系统</span>
+          <span class="lang-en">Smart Morel: MobileNetV3-based Intelligent Morel Recognition &amp; Cultivation System</span>
+        </div>
+        <div class="venue">
+          <span class="lang-zh">2024.04 – 2024.08 · 队长 · 大学生计算机设计大赛</span>
+          <span class="lang-en">Apr – Aug 2024 · Team Leader · China Collegiate Computing Contest</span>
+        </div>
+        <div class="desc lang-zh">
+          设计并部署传感器网络实时监控关键生长参数;基于 MobileNetV3 引入特征增强与多尺度特征融合,提升密集小目标检测精度;
+          通过剪枝与 INT8 量化压缩模型并部署于树莓派,实现大棚环境下的实时智能监测。
+        </div>
+        <div class="desc lang-en">
+          Built a sensor network for real-time monitoring of growth parameters; enhanced MobileNetV3 with feature
+          augmentation and multi-scale fusion for dense small-target detection; compressed the model via pruning
+          and INT8 quantization and deployed it on Raspberry Pi for real-time greenhouse monitoring.
+        </div>
+        <div class="award">
+          <span class="lang-zh">国赛三等奖(人工智能挑战赛)</span>
+          <span class="lang-en">National Third Prize (AI Challenge)</span>
         </div>
       </div>
+    </div>
 
-      <div class="row">
-        <div class="side">2023.02 – 2023.08</div>
-        <div>
-          <div class="head">
-            <span class="lang-zh">全国大学生智能车竞赛<span class="role">队员</span></span>
-            <span class="lang-en">National University Students Intelligent Car Race<span class="role">Team Member</span></span>
-          </div>
-          <ul class="lang-zh">
-            <li>基于 YOLOv6 训练红绿灯识别模型,并用 TensorRT 深度优化 Jetson Nano 端推理,帧率由约 5 FPS 提升至 20+ FPS。</li>
-            <li>设计 S 弯视觉检测算法,重构视觉处理流水线,采用多线程图像采集与 ROS 消息机制解耦感知与驱动节点,高速行驶下识别精度达 96% 以上。</li>
-          </ul>
-          <ul class="lang-en">
-            <li>Trained a YOLOv6 traffic-light recognition model and optimized inference on Jetson Nano with TensorRT, boosting the frame rate from ~5 FPS to 20+ FPS.</li>
-            <li>Designed an S-curve vision detection algorithm and rebuilt the vision pipeline with multi-threaded capture and ROS-based decoupling, achieving 96%+ recognition accuracy at high speed.</li>
-          </ul>
+    <div class="entry">
+      <div class="thumb">
+        <img src="smartcar.jpg" alt="Intelligent Car" onerror="this.remove()">
+      </div>
+      <div>
+        <div class="title">
+          <span class="lang-zh">全国大学生智能车竞赛</span>
+          <span class="lang-en">National University Students Intelligent Car Race</span>
+        </div>
+        <div class="venue">
+          <span class="lang-zh">2023.02 – 2023.08 · 队员</span>
+          <span class="lang-en">Feb – Aug 2023 · Team Member</span>
+        </div>
+        <div class="desc lang-zh">
+          基于 YOLOv6 训练红绿灯识别模型,用 TensorRT 优化 Jetson Nano 端推理,帧率由约 5 FPS 提升至 20+ FPS;
+          设计 S 弯视觉检测算法并重构视觉流水线,多线程采集配合 ROS 消息机制解耦感知与驱动,高速行驶下识别精度达 96% 以上。
+        </div>
+        <div class="desc lang-en">
+          Trained a YOLOv6 traffic-light recognition model and optimized Jetson Nano inference with TensorRT
+          (~5 FPS → 20+ FPS); designed an S-curve vision algorithm and rebuilt the pipeline with multi-threaded
+          capture and ROS-based decoupling, reaching 96%+ recognition accuracy at high speed.
+        </div>
+        <div class="award">
+          <span class="lang-zh">省赛二等奖</span>
+          <span class="lang-en">Provincial Second Prize</span>
         </div>
       </div>
-
     </div>
   </section>
 
@@ -510,7 +451,7 @@
         <span class="lang-en">National University Students Intelligent Car Race · Provincial Second Prize</span>
       </li>
       <li>
-        <span class="lang-zh">中国高校计算机能力挑战赛·团体程序设计天梯赛 国赛优秀奖;蓝桥杯 C/C++ B 组 江苏省二等奖</span>
+        <span class="lang-zh">团体程序设计天梯赛 国赛优秀奖 · 蓝桥杯 C/C++ B 组 江苏省二等奖</span>
         <span class="lang-en">Group Programming Ladder Tournament · National Merit Award; Lanqiao Cup C/C++ (Group B) · Jiangsu Provincial Second Prize</span>
       </li>
       <li>
@@ -520,32 +461,15 @@
     </ul>
   </section>
 
-  <section id="contact">
-    <h2><span class="lang-zh">联系方式</span><span class="lang-en">Contact</span></h2>
-    <ul class="contact-list">
-      <li>
-        <span class="label">Email</span>
-        <a href="mailto:windlovey@gmail.com">windlovey@gmail.com</a>
-      </li>
-      <li>
-        <span class="label">GitHub</span>
-        <a href="https://github.com/windloveyou" target="_blank" rel="noopener">github.com/windloveyou</a>
-      </li>
-      <li>
-        <span class="label"><span class="lang-zh">CSDN 博客</span><span class="lang-en">CSDN Blog</span></span>
-        <a href="https://blog.csdn.net/m0_73954489?type=lately" target="_blank" rel="noopener">风的暖色调</a>
-      </li>
-      <li>
-        <span class="label">Bilibili</span>
-        <a href="https://space.bilibili.com/你的UID" target="_blank" rel="noopener">风的暖色调</a>
-        <!-- 👆 请换成你 B 站主页的真实网址(形如 space.bilibili.com/数字UID) -->
-      </li>
-    </ul>
-  </section>
-
   <footer>
-    <span class="lang-zh">© 2026 黄天择 · 风的暖色调 · 本站托管于 GitHub Pages</span>
-    <span class="lang-en">© 2026 Tianze Huang · Hosted on GitHub Pages</span>
+    <span>
+      <span class="lang-zh">© 2026 黄天择 · 风的暖色调</span>
+      <span class="lang-en">© 2026 Tianze Huang</span>
+    </span>
+    <span>
+      <span class="lang-zh">最后更新:2026 年 7 月 · <a href="#Home">🔝 回到顶部</a></span>
+      <span class="lang-en">Last updated: Jul 2026 · <a href="#Home">🔝 Back to Top</a></span>
+    </span>
   </footer>
 
 </div>
