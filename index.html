@@ -3,9 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>张三 | Zhang San</title>
-<!-- 👆 替换成你的名字 -->
-<meta name="description" content="张三的个人学术主页:研究方向、发表论文与联系方式。">
+<title>Tianzehuang | 风的暖色调</title>
+<meta name="description" content="Tianzehuang 的个人学术主页:研究方向、发表论文与联系方式。Personal academic homepage of Tianzehuang.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Spectral:wght@500;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
@@ -38,6 +37,10 @@
     -webkit-font-smoothing: antialiased;
   }
 
+  /* ===== 双语切换:body 上的 data-lang 决定显示哪种语言 ===== */
+  body[data-lang="zh"] .lang-en { display: none; }
+  body[data-lang="en"] .lang-zh { display: none; }
+
   .wrap {
     max-width: 760px;
     margin: 0 auto;
@@ -55,13 +58,35 @@
 
   /* ===== 顶部 ===== */
   header {
-    padding: 72px 0 40px;
+    padding: 64px 0 40px;
     animation: rise .5s ease both;
+    position: relative;
   }
   @keyframes rise {
     from { opacity: 0; transform: translateY(8px); }
     to   { opacity: 1; transform: none; }
   }
+
+  .lang-switch {
+    position: absolute;
+    top: 24px;
+    right: 0;
+    font-size: .85rem;
+    font-weight: 500;
+    background: none;
+    border: 1px solid var(--rule);
+    border-radius: 999px;
+    padding: 5px 14px;
+    cursor: pointer;
+    color: var(--ink-soft);
+    font-family: var(--sans);
+    transition: color .15s ease, border-color .15s ease;
+  }
+  .lang-switch:hover, .lang-switch:focus-visible {
+    color: var(--accent);
+    border-color: var(--accent);
+  }
+  .lang-switch:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
 
   .name {
     font-family: var(--serif);
@@ -70,8 +95,8 @@
     letter-spacing: .01em;
     line-height: 1.2;
   }
-  .name .en {
-    font-size: 1.3rem;
+  .name .sub {
+    font-size: 1.15rem;
     color: var(--ink-soft);
     font-weight: 500;
     margin-left: .5em;
@@ -83,15 +108,15 @@
     font-size: 1.02rem;
   }
 
-  nav {
+  nav.site-nav {
     margin-top: 28px;
     display: flex;
     gap: 22px;
     font-size: .92rem;
     font-weight: 500;
   }
-  nav a { color: var(--ink); }
-  nav a:hover { color: var(--accent); }
+  nav.site-nav a { color: var(--ink); }
+  nav.site-nav a:hover { color: var(--accent); }
 
   /* ===== 章节 ===== */
   section { padding: 40px 0; border-top: 1px solid var(--rule); }
@@ -119,6 +144,23 @@
     padding: 4px 12px;
     border-radius: 999px;
   }
+
+  /* ===== 教育经历 ===== */
+  .edu-list { display: grid; gap: 16px; }
+  .edu {
+    display: grid;
+    grid-template-columns: 72px 1fr;
+    gap: 0 20px;
+  }
+  .edu .degree {
+    font-family: var(--serif);
+    font-weight: 600;
+    color: var(--accent);
+    font-size: .98rem;
+    padding-top: 1px;
+  }
+  .edu .school { font-weight: 600; }
+  .edu .note { color: var(--ink-soft); font-size: .92rem; }
 
   /* ===== 论文:年份挂在左侧页边 ===== */
   .pub-year-group { display: grid; grid-template-columns: 72px 1fr; gap: 0 20px; }
@@ -184,115 +226,167 @@
   }
 
   @media (max-width: 560px) {
-    header { padding-top: 48px; }
+    header { padding-top: 64px; }
+    .lang-switch { top: 18px; }
     .name { font-size: 1.9rem; }
-    .name .en { display: block; margin: 6px 0 0; }
-    .pub-year-group { grid-template-columns: 1fr; gap: 8px; }
+    .name .sub { display: block; margin: 6px 0 0; }
+    .pub-year-group, .edu { grid-template-columns: 1fr; gap: 4px; }
+    .pub-year-group { gap: 8px; }
     .contact-list li { grid-template-columns: 90px 1fr; }
   }
 </style>
 </head>
-<body>
+<body data-lang="zh">
 
 <div class="wrap">
 
   <header>
-    <h1 class="name">张三<span class="en">Zhang San</span></h1>
-    <!-- 👆 替换成你的中英文名字 -->
-    <p class="tagline">XX大学 · 计算机科学 博士生 / 研究员</p>
-    <!-- 👆 替换成你的单位和身份 -->
-    <nav>
-      <a href="#about">关于我</a>
-      <a href="#publications">发表论文</a>
-      <a href="#contact">联系方式</a>
+    <button class="lang-switch" id="langSwitch" type="button" aria-label="Switch language">
+      <span class="lang-zh">English</span><span class="lang-en">中文</span>
+    </button>
+
+    <!-- 如果想显示中文真名,把下面的 Tianzehuang / 风的暖色调 换成你的名字即可 -->
+    <h1 class="name">Tianzehuang<span class="sub">风的暖色调</span></h1>
+
+    <p class="tagline">
+      <span class="lang-zh">华中师范大学 · 硕士生 · 人工智能方向</span>
+      <span class="lang-en">M.S. Student in Artificial Intelligence · Central China Normal University</span>
+    </p>
+
+    <nav class="site-nav">
+      <a href="#about"><span class="lang-zh">关于我</span><span class="lang-en">About</span></a>
+      <a href="#education"><span class="lang-zh">教育经历</span><span class="lang-en">Education</span></a>
+      <a href="#publications"><span class="lang-zh">发表论文</span><span class="lang-en">Publications</span></a>
+      <a href="#contact"><span class="lang-zh">联系方式</span><span class="lang-en">Contact</span></a>
     </nav>
   </header>
 
   <section id="about" class="about">
-    <h2>关于我</h2>
-    <p>
-      我目前在 XX大学 攻读博士学位,导师为 XXX 教授。我的研究方向是机器学习与自然语言处理,
-      特别关注大语言模型的可解释性与安全性。
-    </p>
-    <p>
-      在此之前,我于 20XX 年在 XX大学 获得学士学位。
-    </p>
-    <!-- 👆 用两三句话介绍自己,不需要的段落可以删掉 -->
+    <h2><span class="lang-zh">关于我</span><span class="lang-en">About</span></h2>
+
+    <div class="lang-zh">
+      <p>
+        我是华中师范大学的硕士研究生,研究兴趣集中在人工智能领域,包括计算机视觉(CV)与自然语言处理(NLP),
+        目前正深入学习计算机视觉方向。
+      </p>
+      <p>
+        ⭐ 我的目标是成为一名优秀的人工智能算法工程师。
+      </p>
+    </div>
+    <div class="lang-en">
+      <p>
+        I am a master's student at Central China Normal University. My research interests lie in
+        Artificial Intelligence, including Computer Vision (CV) and Natural Language Processing (NLP).
+        I am currently focusing on Computer Vision.
+      </p>
+      <p>
+        ⭐ My goal is to become an excellent AI algorithm engineer.
+      </p>
+    </div>
+
     <div class="interests">
-      <span>机器学习</span>
-      <span>自然语言处理</span>
-      <span>大语言模型</span>
-      <!-- 👆 替换成你的研究关键词 -->
+      <span class="lang-zh">人工智能</span><span class="lang-en">Artificial Intelligence</span>
+      <span class="lang-zh">计算机视觉</span><span class="lang-en">Computer Vision</span>
+      <span class="lang-zh">自然语言处理</span><span class="lang-en">NLP</span>
+      <span class="lang-zh">深度学习</span><span class="lang-en">Deep Learning</span>
+    </div>
+  </section>
+
+  <section id="education">
+    <h2><span class="lang-zh">教育经历</span><span class="lang-en">Education</span></h2>
+    <div class="edu-list">
+
+      <div class="edu">
+        <div class="degree"><span class="lang-zh">硕士</span><span class="lang-en">M.S.</span></div>
+        <div>
+          <div class="school">
+            <span class="lang-zh">华中师范大学</span>
+            <span class="lang-en">Central China Normal University</span>
+          </div>
+          <div class="note">
+            <span class="lang-zh">人工智能方向</span>
+            <span class="lang-en">Artificial Intelligence</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="edu">
+        <div class="degree"><span class="lang-zh">本科</span><span class="lang-en">B.S.</span></div>
+        <div>
+          <div class="school">
+            <span class="lang-zh">苏州（Suzhou University of Technology）</span>
+            <span class="lang-en">Suzhou University of Technology</span>
+          </div>
+          <!-- 👆 请把中文校名改成学校的正式中文全称 -->
+        </div>
+      </div>
+
     </div>
   </section>
 
   <section id="publications">
-    <h2>发表论文</h2>
-
-    <!-- 每一年是一个 pub-year-group,年份显示在左侧页边;按时间倒序排列 -->
-    <div class="pub-year-group">
-      <div class="pub-year">2025</div>
-      <div class="pub-list">
-
-        <article class="pub">
-          <div class="title">A Simple Method for Something Important</div>
-          <div class="authors"><b>Zhang San</b>, Li Si, Wang Wu</div>
-          <div class="meta">
-            <span class="venue">NeurIPS 2025</span>
-            <a href="https://arxiv.org/abs/xxxx.xxxxx">Paper</a>
-            <a href="https://github.com/yourname/repo">Code</a>
-          </div>
-        </article>
-
-        <article class="pub">
-          <div class="title">Another Interesting Research Work</div>
-          <div class="authors">Li Si, <b>Zhang San</b></div>
-          <div class="meta">
-            <span class="venue">ACL 2025</span>
-            <a href="https://arxiv.org/abs/xxxx.xxxxx">Paper</a>
-          </div>
-        </article>
-
-      </div>
-    </div>
+    <h2><span class="lang-zh">发表论文</span><span class="lang-en">Publications</span></h2>
 
     <div class="pub-year-group">
       <div class="pub-year">2024</div>
       <div class="pub-list">
 
         <article class="pub">
-          <div class="title">An Earlier Study on Some Topic</div>
-          <div class="authors"><b>Zhang San</b></div>
+          <div class="title">ESPCA: An Efficient Spatial-Sensitive Partial Channel Attention Mechanism in CNNs</div>
+          <div class="authors"><b>Tianzehuang</b></div>
+          <!-- 👆 请改成论文的完整作者列表,自己的名字用 <b> 加粗 -->
           <div class="meta">
-            <span class="venue">arXiv preprint</span>
-            <a href="https://arxiv.org/abs/xxxx.xxxxx">Paper</a>
+            <span class="venue">AICCC 2024</span>
+            <!-- 有论文链接或代码链接的话,取消下面的注释并填入网址
+            <a href="https://xxxx">Paper</a>
+            <a href="https://github.com/windloveyou/xxxx">Code</a>
+            -->
           </div>
         </article>
 
       </div>
     </div>
-
-    <p style="margin-top:24px; font-size:.92rem; color:var(--ink-soft);">
-      完整论文列表请见我的 <a href="https://scholar.google.com/citations?user=你的ID">Google Scholar</a>。
-    </p>
   </section>
 
   <section id="contact">
-    <h2>联系方式</h2>
+    <h2><span class="lang-zh">联系方式</span><span class="lang-en">Contact</span></h2>
     <ul class="contact-list">
-      <li><span class="label">Email</span><a href="mailto:yourname@example.com">yourname@example.com</a></li>
-      <li><span class="label">GitHub</span><a href="https://github.com/yourname">github.com/yourname</a></li>
-      <li><span class="label">Scholar</span><a href="https://scholar.google.com/citations?user=你的ID">Google Scholar</a></li>
-      <li><span class="label">Twitter / X</span><a href="https://twitter.com/yourname">@yourname</a></li>
-      <!-- 👆 替换成你的真实链接,不需要的整行删掉 -->
+      <li>
+        <span class="label">Email</span>
+        <a href="mailto:windlovey@gmail.com">windlovey@gmail.com</a>
+      </li>
+      <li>
+        <span class="label">GitHub</span>
+        <a href="https://github.com/windloveyou" target="_blank" rel="noopener">github.com/windloveyou</a>
+      </li>
+      <li>
+        <span class="label"><span class="lang-zh">CSDN 博客</span><span class="lang-en">CSDN Blog</span></span>
+        <a href="https://blog.csdn.net/m0_73954489?type=lately" target="_blank" rel="noopener">风的暖色调</a>
+      </li>
+      <li>
+        <span class="label">Bilibili</span>
+        <a href="https://space.bilibili.com/你的UID" target="_blank" rel="noopener">风的暖色调</a>
+        <!-- 👆 你之前给的 Bilibili 链接和 CSDN 是同一个,这里请换成你 B 站主页的真实网址 -->
+      </li>
     </ul>
   </section>
 
   <footer>
-    © 2026 张三 · 本站托管于 GitHub Pages
+    <span class="lang-zh">© 2026 Tianzehuang · 本站托管于 GitHub Pages</span>
+    <span class="lang-en">© 2026 Tianzehuang · Hosted on GitHub Pages</span>
   </footer>
 
 </div>
+
+<script>
+  var btn = document.getElementById('langSwitch');
+  btn.addEventListener('click', function () {
+    var body = document.body;
+    var next = body.getAttribute('data-lang') === 'zh' ? 'en' : 'zh';
+    body.setAttribute('data-lang', next);
+    document.documentElement.setAttribute('lang', next === 'zh' ? 'zh-CN' : 'en');
+  });
+</script>
 
 </body>
 </html>
