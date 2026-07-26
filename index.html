@@ -6,9 +6,25 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>黄天择 Tianze Huang</title>
 <meta name="description" content="黄天择的个人学术主页:研究方向、发表论文、项目经历与联系方式。Personal academic homepage of Tianze Huang.">
+
+<!-- Favicon(浏览器标签页小图标) -->
+<link rel="icon" type="image/png" href="favicon.png">
+
+<!-- 社交分享卡片:链接发到微信/QQ/Twitter 等平台时显示的标题、简介和头像 -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="Tianze Huang 黄天择">
+<meta property="og:description" content="Incoming M.S. student in Computer Technology at CCNU. Research interests: computer vision, attention mechanisms, and model compression.">
+<meta property="og:url" content="https://windloveyou.github.io/">
+<meta property="og:image" content="https://windloveyou.github.io/photo.jpg">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Tianze Huang 黄天择">
+<meta name="twitter:description" content="Incoming M.S. student in Computer Technology at CCNU. Research interests: computer vision, attention mechanisms, and model compression.">
+<meta name="twitter:image" content="https://windloveyou.github.io/photo.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.9.4/css/academicons.min.css">
 <style>
   :root {
     --bg: #FFFFFF;
@@ -114,11 +130,31 @@
   .titles .soft { color: var(--ink-soft); }
 
   .profile-links {
-    margin-top: 12px;
+    margin-top: 14px;
     font-size: .93rem;
-    color: var(--ink-soft);
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 6px 22px;
   }
-  .profile-links a { font-weight: 500; }
+  .profile-links a {
+    font-weight: 500;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .profile-links i { font-size: 1.05em; }
+  /* 各家官方品牌色 */
+  .profile-links .ai-google-scholar { color: #4285F4; }  /* Google 蓝 */
+  .profile-links .fa-github        { color: #181717; }  /* GitHub 黑 */
+  .profile-links .fa-envelope      { color: #EA4335; }  /* Gmail 红 */
+  .profile-links .fa-bilibili      { color: #00A1D6; }  /* B 站蓝 */
+  .profile-links .csdn-icon {
+    height: 1.05em;
+    width: auto;
+    display: inline-block;
+    vertical-align: -0.12em;
+  }
 
   /* ===== 章节 ===== */
   section { padding-top: 40px; }
@@ -133,6 +169,21 @@
 
   .prose p + p { margin-top: 12px; }
   .prose i { color: var(--ink); }
+
+  /* ===== News 动态 ===== */
+  .news { list-style: none; }
+  .news li {
+    display: grid;
+    grid-template-columns: 92px 1fr;
+    gap: 14px;
+    padding: 5px 0;
+    font-size: .96rem;
+  }
+  .news .date {
+    color: var(--ink-soft);
+    font-size: .9rem;
+    white-space: nowrap;
+  }
 
   /* ===== 教育经历(简洁行) ===== */
   .edu-line { margin-bottom: 10px; }
@@ -274,15 +325,11 @@
     </p>
 
     <p class="profile-links">
-      <a href="https://scholar.google.com/citations?user=MoO2vmsAAAAJ" target="_blank" rel="noopener">Google Scholar</a>
-      &nbsp;/&nbsp;
-      <a href="https://github.com/windloveyou" target="_blank" rel="noopener">GitHub</a>
-      &nbsp;/&nbsp;
-      <a href="mailto:windlovey@gmail.com">Email</a>
-      &nbsp;/&nbsp;
-      <a href="https://blog.csdn.net/m0_73954489?type=lately" target="_blank" rel="noopener">CSDN</a>
-      &nbsp;/&nbsp;
-      <a href="https://space.bilibili.com/391484072" target="_blank" rel="noopener">Bilibili</a>
+      <a href="https://scholar.google.com/citations?user=MoO2vmsAAAAJ" target="_blank" rel="noopener"><i class="ai ai-google-scholar" aria-hidden="true"></i>Google Scholar</a>
+      <a href="https://github.com/windloveyou" target="_blank" rel="noopener"><i class="fa-brands fa-github" aria-hidden="true"></i>GitHub</a>
+      <a href="mailto:windlovey@gmail.com"><i class="fa-solid fa-envelope" aria-hidden="true"></i>Email</a>
+      <a href="https://blog.csdn.net/m0_73954489?type=lately" target="_blank" rel="noopener"><img class="csdn-icon" src="https://cdn.simpleicons.org/csdn/FC5531" alt="" aria-hidden="true">CSDN</a>
+      <a href="https://space.bilibili.com/391484072" target="_blank" rel="noopener"><i class="fa-brands fa-bilibili" aria-hidden="true"></i>Bilibili</a>
     </p>
   </header>
 
@@ -315,6 +362,41 @@
       </p>
       <p>⭐ My goal: to become an excellent AI algorithm engineer.</p>
     </div>
+  </section>
+
+  <section id="news">
+    <h2><span class="lang-zh">动态</span><span class="lang-en">News</span></h2>
+    <!-- 倒序排列,最新的放最上面;日期不准的自己微调一下 -->
+    <ul class="news">
+      <li>
+        <span class="date">2026.09</span>
+        <span>
+          <span class="lang-zh">将入学华中师范大学,攻读计算机技术专业硕士学位。</span>
+          <span class="lang-en">I will join Central China Normal University as an M.S. student in Computer Technology.</span>
+        </span>
+      </li>
+      <li>
+        <span class="date">2024.12</span>
+        <span>
+          <span class="lang-zh">一作论文 ESPCA 在 AICCC 2024 发表 🎉</span>
+          <span class="lang-en">Our first-author paper ESPCA was published at AICCC 2024 🎉</span>
+        </span>
+      </li>
+      <li>
+        <span class="date">2024.08</span>
+        <span>
+          <span class="lang-zh">"智慧菌探"项目获大学生计算机设计大赛·人工智能挑战赛国赛三等奖。</span>
+          <span class="lang-en">Our "Smart Morel" project won the National Third Prize at the China Collegiate Computing Contest (AI Challenge).</span>
+        </span>
+      </li>
+      <li>
+        <span class="date">2023.08</span>
+        <span>
+          <span class="lang-zh">获全国大学生智能汽车竞赛省赛二等奖。</span>
+          <span class="lang-en">Won the Provincial Second Prize at the National University Students Intelligent Car Race.</span>
+        </span>
+      </li>
+    </ul>
   </section>
 
   <section id="publications">
